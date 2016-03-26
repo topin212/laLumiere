@@ -1,3 +1,4 @@
+# thanks to kmorcinek for this .gitignore, I now know it's not that hard to write them, actually :)
 # Download this file using PowerShell v3 under Windows with the following comand
 # Invoke-WebRequest https://gist.githubusercontent.com/kmorcinek/2710267/raw/ -OutFile .gitignore
 
