@@ -1,8 +1,8 @@
 ﻿/*
  * Created by SharpDevelop.
  * User: Alex
- * Date: 26.03.2016
- * Time: 13:12
+ * Date: 03/27/2016
+ * Time: 18:32
  * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
@@ -20,13 +20,13 @@ using La_Lumière.Util;
 namespace La_Lumière.Views
 {
 	/// <summary>
-	/// Interaction logic for LoginWindow.xaml
+	/// Interaction logic for AdminView.xaml
 	/// </summary>
-	public partial class LoginWindow : Window, IClosable
-	{
-		public LoginWindow()
+	public partial class AdminView : Window, IClosable
+	{		
+		public AdminView()
 		{
-			InitializeComponent();
+			InitializeComponent();		
 		}
 
 		#region IClosable implementation
@@ -38,7 +38,7 @@ namespace La_Lumière.Views
 
 		public string login {
 			get {
-				return loginTextBox.Text;
+				return "admin";
 			}
 		}
 

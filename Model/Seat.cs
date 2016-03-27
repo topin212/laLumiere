@@ -16,8 +16,19 @@ namespace La_Lumière.Model
 	public class Seat
 	{
 		public Tuple<int,int> location { get; set; }
-		public int price { get; set; }		
+		public double priceKoeff { get; set; }		
 		
+		public Seat()
+		{
+			
+		}
+		public Seat(Tuple<int, int> location)
+		{
+			if (location == null)
+				throw new ArgumentNullException("location");
+			this.location = location;
+			this.priceKoeff=1;
+		}
 		public Seat(Tuple<int, int> location, int price)
 		{
 			if (location == null)
@@ -25,12 +36,10 @@ namespace La_Lumière.Model
 			if (price < 0)
 				throw new ArgumentOutOfRangeException("price", price, "Value must be greater than " + 0);
 			this.location = location;
-			this.price = price;
+			this.priceKoeff = price;
 			
 		}
-		public Seat()
-		{
-			
-		}
+		
+		
 	}
 }

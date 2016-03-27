@@ -1,8 +1,8 @@
 ﻿/*
  * Created by SharpDevelop.
  * User: Alex
- * Date: 26.03.2016
- * Time: 13:12
+ * Date: 03/27/2016
+ * Time: 19:29
  * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
@@ -15,33 +15,17 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using La_Lumière.Util;
 
 namespace La_Lumière.Views
 {
 	/// <summary>
-	/// Interaction logic for LoginWindow.xaml
+	/// Interaction logic for TestView.xaml
 	/// </summary>
-	public partial class LoginWindow : Window, IClosable
+	public partial class TestView : Window
 	{
-		public LoginWindow()
+		public TestView()
 		{
 			InitializeComponent();
 		}
-
-		#region IClosable implementation
-
-		public void close()
-		{
-			Close();
-		}
-
-		public string login {
-			get {
-				return loginTextBox.Text;
-			}
-		}
-
-		#endregion
 	}
 }

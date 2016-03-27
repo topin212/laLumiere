@@ -15,6 +15,14 @@ namespace La_Lumière.Model
 	/// </summary>
 	public class LoginModel
 	{
+		public string login { get; set; }
+		public string password { get; set; }
+		
+		public bool checkIfGood(){
+			//TODO complete logging in to a database as a guest, and checkng for password.
+			return true;
+		}
+		
 		public LoginModel()
 		{
 		}
