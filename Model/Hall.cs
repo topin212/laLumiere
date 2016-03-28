@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.IO;
 using System.Collections.Generic;
 
 namespace La_Lumière.Model
@@ -41,5 +42,21 @@ namespace La_Lumière.Model
 				rows.Add(new Row(rowsList[i].Item1, rowsList[i].Item2));
 			}
 		}
+
+        public static List<Tuple<int,int>> getHall(string source)
+        {
+            var ret = new List<Tuple<int, int>>();
+            string s = "";
+            using (var file = new StreamReader(source))
+            {
+                while((s = file.ReadLine())!=null){
+                    var tempArray = s.Split(' ');
+                    ret.Add(new Tuple<int,int>(int.Parse(tempArray[0]), int.Parse(tempArray[1])));
+                    Console.WriteLine("{0}, {1}", int.Parse(tempArray[0]), int.Parse(tempArray[1]));
+                }
+            }
+
+            return ret;
+        }
 	}
 }

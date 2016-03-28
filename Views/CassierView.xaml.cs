@@ -26,7 +26,32 @@ namespace La_Lumière.Views
 		public CassierView()
 		{
 			InitializeComponent();
+            
 		}
+
+        public void generateButtons(List<Tuple<int, int>> schema){
+            Button tempButton;
+            #region govnokod
+            int max = 0;
+            for (int i = 0; i < schema.Count; i++)
+			{
+                max = max<schema[i].Item2?schema[i].Item2:max;
+			}
+            #endregion
+
+            int margin = 10;
+            int defaultSize = 40;
+
+            int maxWidth = margin+(defaultSize + margin)*max;
+
+            for (int i = 0; i < schema.Count; i++)
+            {
+                tempButton = new Button();
+                tempButton.Height = defaultSize;
+                tempButton.Width = defaultSize;
+                tempButton.Margin = new Thickness((maxWidth - )/2)
+            }
+        }
 
 	}
 }
