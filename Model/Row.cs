@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Collections.Generic;
 
 namespace La_Lumière.Model
 {
@@ -15,30 +16,30 @@ namespace La_Lumière.Model
 	/// </summary>
 	public class Row
 	{
-		public Seat[] seats { get; set; }
+		public List<Seat> seats { get; set; }
 		public int rowNumber { get; set; }
 		public double priceKoeff { get; set; }
 		
 		int _seatNumber;
 		public Tuple<int, int> row2Tuple(){
-			return new Tuple<int, int>(rowNumber, seats.Length);
+			return new Tuple<int, int>(rowNumber, seats.Count);
 		}
 		
 		public int seatNumber {
-			get { return _seatNumber = seats.Length; }
+			get { return _seatNumber = seats.Count; }
 		}
 		public Row()
 		{
 			
 		}
-		public Row(Seat[] seats)
+		public Row(List<Seat> seats)
 		{
 			if (seats == null)
 				throw new ArgumentNullException("seats");
 			this.seats = seats;
 			this.priceKoeff=1;
 		}
-		public Row(Seat[] seats, int priceKoeff)
+		public Row(List<Seat> seats, int priceKoeff)
 		{
 			if (seats == null)
 				throw new ArgumentNullException("seats");
@@ -48,7 +49,7 @@ namespace La_Lumière.Model
 			this.priceKoeff = priceKoeff;
 			
 		}
-		public Row(Seat[] seats, int rowNumber, double priceKoeff)
+		public Row(List<Seat> seats, int rowNumber, double priceKoeff)
 		{
 			if (seats == null)
 				throw new ArgumentNullException("seats");
@@ -63,12 +64,12 @@ namespace La_Lumière.Model
 		}
 		public Row(int rowNumber, int seatNumber)
 		{
-			seats = new Seat[seatNumber];
+			seats = new List<Seat>();
 			this.rowNumber = rowNumber;
 			priceKoeff = 1;
 			
-			for (int i = 0; i < seats.Length; i++) {
-				seats[i] = new Seat(new Tuple<int, int>(rowNumber, i+1));
+			for (int i = 0; i < seats.Count; i++) {
+				seats.Add(new Seat(new Tuple<int, int>(rowNumber, i+1)));
 			}
 		}
 	}

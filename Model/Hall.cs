@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Collections.Generic;
 
 namespace La_Lumière.Model
 {
@@ -16,16 +17,14 @@ namespace La_Lumière.Model
 	public class Hall
 	{
 		public string Name { get; set; }
-		public Row[] rows { get; set; }
+		public List<Row> rows { get; set; }
 		
-		public Row[] getRows(){
+		public List<Row> getRows(){
 			return rows;
 		}
 		public Hall(){
-			Name = "default";
-			rows = new []{new Row(new []{new Seat(new Tuple<int, int>(1,1),1)})};
 		}
-		public Hall(string name, Row[] rows)
+		public Hall(string name, List<Row> rows)
 		{
 			if (name == null)
 				throw new ArgumentNullException("name");
@@ -37,9 +36,9 @@ namespace La_Lumière.Model
 		}
 		public Hall(Tuple<int,int>[] rowsList)
 		{
-			rows = new Row[rowsList.Length];
-			for (int i = 0; i < rows.Length; i++) {
-				rows[i] = new Row(rowsList[i].Item1, rowsList[i].Item2);
+			rows = new List<Row>();
+			for (int i = 0; i < rows.Count; i++) {
+				rows.Add(new Row(rowsList[i].Item1, rowsList[i].Item2));
 			}
 		}
 	}
