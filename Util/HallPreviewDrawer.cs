@@ -20,7 +20,7 @@ namespace La_Lumière.Util
 		int x,y=10,margin=10, defaultSize = 40;
 		int imageWidth=600, imageHeight=600;
 		
-		
+		//TODO accept width and height as parameters
 		public Bitmap generateHall(Tuple<int,int>[] hall){
 			
 			foreach (var element in hall) {
