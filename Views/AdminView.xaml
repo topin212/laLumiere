@@ -5,7 +5,7 @@
 	Width="714"
 	Height="474" xmlns:local="clr-namespace:La_Lumière.ViewModels">
 	<Window.DataContext>
-		<local:AdminViewModel></local:AdminViewModel>
+		<local:AdminViewModel />
 	</Window.DataContext>
 	<Grid>
 		<TabControl
@@ -25,19 +25,10 @@
 					<DataGrid
 						Grid.Column="0"
 						Grid.Row="1"
-						Grid.RowSpan="3"
 						HorizontalAlignment="Stretch"
 						VerticalAlignment="Stretch"
-						Margin="5,0,4,3" />
-					<Label
-						Content="Existing halls:"
-						Width="212"
-						Height="28"
-						Grid.Column="0"
-						Grid.Row="0"
-						HorizontalAlignment="Left"
-						VerticalAlignment="Top"
-						Margin="5,0,0,0" />
+						Margin="5,0,4,3"
+						Grid.RowSpan="4" />
 					<Label
 						Height="30"
 						Width="240"
@@ -49,16 +40,19 @@
 						Grid.Column="1" />
 					<Grid
 						x:Name="hallAddingGrid"
+						Grid.Column="1"
+						Grid.ColumnSpan="2"
 						Grid.Row="1"
 						HorizontalAlignment="Stretch"
 						VerticalAlignment="Stretch"
-						Margin="1,0,0,4"
-						Grid.Column="1">
+						Margin="1,0,3,5">
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition
 								Width="121.908384246796" />
 							<ColumnDefinition
-								Width="26.2183411832487*" />
+								Width="10.1167127969155*" />
+							<ColumnDefinition
+								Width="16.1041172298931*" />
 						</Grid.ColumnDefinitions>
 						<Grid.RowDefinitions>
 							<RowDefinition
@@ -68,9 +62,9 @@
 							<RowDefinition
 								Height="0.107776106058305*" />
 							<RowDefinition
-								Height="0.119360671335367*" />
+								Height="0.100051582345593*" />
 							<RowDefinition
-								Height="0.0806491022536262*" />
+								Height="0.100762736617974*" />
 							<RowDefinition
 								Height="0.119360671335367*" />
 						</Grid.RowDefinitions>
@@ -84,14 +78,14 @@
 							VerticalAlignment="Bottom"
 							Margin="0,0,0,0" />
 						<TextBox
+							x:Name="RowSeatNumberTextBox"
 							Height="20"
-							Width="115"
-							Grid.Column="0"
-							Grid.Row="1"
+							Width="125"
+							Grid.Column="1"
+							Grid.Row="0"
 							HorizontalAlignment="Left"
 							VerticalAlignment="Top"
-							Margin="5,5,0,0"
-							x:Name="RowSeatNumberTextBox" />
+							Margin="3,5,0,0" />
 						<Button
 							Content="Add Row"
 							Width="115"
@@ -99,32 +93,32 @@
 							x:Name="addRowButton"
 							Command="{Binding addRowCommand}"
 							CommandParameter="{Binding ElementName=RowSeatNumberTextBox, Path=Text}"
-							Grid.Column="0"
-							Grid.Row="2"
+							Grid.Column="1"
+							Grid.Row="3"
 							HorizontalAlignment="Left"
 							VerticalAlignment="Top"
-							Margin="5,1,0,0" />
+							Margin="8,3,0,0" />
 						<Button
 							Content="Remove selected"
 							Width="115"
 							Height="25"
-							Grid.Column="0"
-							Grid.Row="3"
-							HorizontalAlignment="Left"
-							VerticalAlignment="Top"
-							Margin="5,3,0,0"
 							x:Name="RemoveSelectedRowButton"
 							Command="{Binding removeSelectedRowCommand}"
-							CommandParameter="{Binding ElementName=RowSeatNumber, Path=SelectedItem}" />
+							CommandParameter="{Binding ElementName=RowSeatNumber, Path=SelectedItem}"
+							Grid.Column="1"
+							Grid.Row="5"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="8,7,0,0" />
 						<ListView
 							x:Name="RowSeatNumber"
 							ItemsSource="{Binding rows}"
-							Grid.Column="1"
+							Grid.Column="2"
 							Grid.Row="0"
 							Grid.RowSpan="6"
 							HorizontalAlignment="Stretch"
 							VerticalAlignment="Stretch"
-							Margin="3,0,0,8">
+							Margin="1,0,5,5">
 							<ListView.View>
 								<GridView>
 									<GridView.Columns>
@@ -136,6 +130,10 @@
 											Header="Seats"
 											Width="75"
 											DisplayMemberBinding="{Binding seatNumber, UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+										<GridViewColumn
+											Header="Seats"
+											Width="75"
+											DisplayMemberBinding="{Binding priceKoeff, UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
 									</GridView.Columns>
 								</GridView>
 							</ListView.View>
@@ -151,46 +149,61 @@
 						<Button
 							Content="Edit selected"
 							Height="25"
+							Width="115"
 							Grid.Column="0"
-							Grid.Row="3"
-							Grid.RowSpan="2"
-							HorizontalAlignment="Stretch"
+							Grid.Row="4"
+							HorizontalAlignment="Left"
 							VerticalAlignment="Top"
-							Margin="5,33,2,0" />
+							Margin="5,3,0,0" />
+						<Label
+							Content="Rows seat number:"
+							Width="120"
+							Height="25"
+							Grid.Column="0"
+							Grid.Row="1"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Bottom"
+							Margin="0,0,0,4" />
+						<TextBox
+							x:Name="RowSeatNumberTextBox_Copy"
+							Height="20"
+							Width="125"
+							Grid.Column="1"
+							Grid.Row="1"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="3,5,0,0" />
+						<Button
+							Height="25"
+							Width="115"
+							Grid.Column="1"
+							Grid.Row="4"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="8,3,0,0"
+							Content="Submit selected" />
 					</Grid>
 					<Grid
-						HorizontalAlignment="Stretch"
-						VerticalAlignment="Stretch"
-						Margin="0,0,-2,3"
-						Grid.Row="2"
-						x:Name="hallListBoxPreviewGrid"
-						Grid.Column="2">
-						<Grid.RowDefinitions>
-							<RowDefinition
-								Height="0.185943728627841*" />
-							<RowDefinition
-								Height="0.814056271372159*" />
-						</Grid.RowDefinitions>
-					</Grid>
-					<Grid
-						Width="240"
-						Height="180"
+						x:Name="DANGERZONE"
+						Width="235"
+						Height="179"
 						Grid.Column="1"
 						Grid.Row="2"
+						Grid.RowSpan="2"
 						HorizontalAlignment="Left"
 						VerticalAlignment="Bottom"
-						Margin="1,0,0,3"
-						x:Name="DANGERZONE">
+						Margin="4,0,0,0">
 						<Label
 							Content="DANGER ZONE"
 							Background="#FFFF0000"
 							Foreground="#FFFFFFFF"
-							Height="30"
+							Height="30.000000000000014"
 							Grid.Column="0"
 							Grid.Row="0"
+							Grid.RowSpan="2"
 							HorizontalAlignment="Stretch"
 							VerticalAlignment="Top"
-							Margin="0,0,0,0" />
+							Margin="0,2,0,0" />
 						<Button
 							Content="Remove selected hall"
 							Width="120"
@@ -201,19 +214,18 @@
 							VerticalAlignment="Top"
 							Margin="5,5,0,0" />
 						<StackPanel
-							Height="25"
-							Width="240"
+							Orientation="Horizontal"
 							Grid.Column="0"
 							Grid.Row="1"
-							Margin="0,0,0,0"
-							Orientation="Horizontal"
+							HorizontalAlignment="Stretch"
 							VerticalAlignment="Stretch"
-							HorizontalAlignment="Stretch">
+							Margin="0,2,0,3">
 							<CheckBox
 								VerticalContentAlignment="Center"
 								HorizontalContentAlignment="Center"
 								Content="I see"
-								Width="52" />
+								Width="52"
+								Margin="15,0,0,0" />
 							<CheckBox
 								Content="I double-checked"
 								HorizontalContentAlignment="Center"
@@ -231,21 +243,21 @@
 							Grid.Row="2"
 							HorizontalAlignment="Left"
 							VerticalAlignment="Top"
-							Margin="145,7,0,0" />
+							Margin="140,5,0,0" />
 						<Button
 							Content="In case of revision, press here"
 							Height="25"
-							Width="235"
+							Width="225"
 							Grid.Column="0"
 							Grid.Row="2"
 							HorizontalAlignment="Left"
 							VerticalAlignment="Bottom"
-							Margin="0,0,0,5" />
+							Margin="5,0,0,4" />
 						<Grid.RowDefinitions>
 							<RowDefinition
-								Height="30" />
+								Height="34.2138425580248" />
 							<RowDefinition
-								Height="30" />
+								Height="26" />
 							<RowDefinition
 								Height="0.649366370081577*" />
 						</Grid.RowDefinitions>
@@ -253,15 +265,49 @@
 					<Label
 						Content="Preview:"
 						Grid.Column="2"
-						Grid.Row="0"
+						Grid.Row="2"
 						HorizontalAlignment="Stretch"
 						VerticalAlignment="Stretch"
-						Margin="0,0,3,0" />
+						Margin="0,0,3,1" />
 					<Image
+						Source="..\bin\Debug\kek.bmp"
 						Grid.Column="2"
-						Grid.Row="1"
-						Margin="5,5,3,5"
-						Source="..\bin\Debug\kek.bmp" />
+						Grid.Row="3"
+						HorizontalAlignment="Stretch"
+						VerticalAlignment="Stretch"
+						Margin="112.5,76,115.5,76" />
+					<Grid
+						Width="225"
+						Height="30"
+						Grid.Column="0"
+						Grid.Row="0"
+						HorizontalAlignment="Left"
+						VerticalAlignment="Top"
+						Margin="0,0,0,0">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition
+								Width="0.50463231002066*" />
+							<ColumnDefinition
+								Width="0.495614495830284*" />
+						</Grid.ColumnDefinitions>
+						<Label
+							Content="Existing halls:"
+							Grid.Column="0"
+							Grid.Row="0"
+							HorizontalAlignment="Stretch"
+							VerticalAlignment="Stretch"
+							Margin="0,0,24,0" />
+						<Button
+							x:Name="RefreshButton"
+							Content="Refresh"
+							Width="75"
+							Height="30"
+							Grid.Column="1"
+							Grid.Row="0"
+							HorizontalAlignment="Right"
+							VerticalAlignment="Bottom"
+							Margin="0,0,5,0" />
+					</Grid>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition
 							Width="0.328080229226362*" />
@@ -276,7 +322,9 @@
 						<RowDefinition
 							Height="0.436820521124375*" />
 						<RowDefinition
-							Height="0.398767925368939*" />
+							Height="0.067550850745558*" />
+						<RowDefinition
+							Height="0.331217074623381*" />
 					</Grid.RowDefinitions>
 				</Grid>
 			</TabItem>

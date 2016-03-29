@@ -11,18 +11,22 @@ namespace La_Lumière.ViewModels
 {
     class CassierViewModel : BaseViewModel
     {
-        public List<Tuple<int, int>> hallRows { get; set; }
+        public List<Tuple<int, int, int>> hallRows { get; set; }
 
+        public event EventHandler<NotificationEventArgs> generateFieldEvent;
+        
         #region commands
         public RelayCommand generateCommand { get; set; }
         #endregion
 
-        Hall hall;
-
         public CassierViewModel()
         {
             hallRows = Hall.getHall("testHall.txt");
+            generateCommand = new RelayCommand(generateButtons);
         }
-
+		
+        void generateButtons(object kek=null){
+        	generateFieldEvent.Invoke(null, new NotificationEventArgs(hallRows));
+        }
     }
 }

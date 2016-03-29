@@ -22,6 +22,8 @@ namespace La_Lumière.ViewModels
 		HallPreviewDrawer hallDrawer = new HallPreviewDrawer();
 		Hall hall = new Hall();
 		
+		public ObservableCollection<Hall> halls { get; set; }
+		
 		public ObservableCollection<Row> rows { get; set; }
 		
 		#region relay commands
@@ -33,7 +35,7 @@ namespace La_Lumière.ViewModels
 		{
 			//hall = new Hall(fillDummyData());
 			rows = new ObservableCollection<Row>(hall.getRows());
-			
+			//halls = new ObservableCollection<Hall>(Hall.getAllHalls());
 			#region relay commands setup
 			addRowCommand = new RelayCommand(addRowToHall);
 			removeSelectedRowCommand = new RelayCommand(removeRowFromHall);

@@ -20,6 +20,7 @@ namespace La_Lumière.Model
 		public int rowNumber { get; set; }
 		public double priceKoeff { get; set; }
 		
+		
 		int _seatNumber;
 		public Tuple<int, int> row2Tuple(){
 			return new Tuple<int, int>(rowNumber, seats.Count);
@@ -49,7 +50,7 @@ namespace La_Lumière.Model
 			this.priceKoeff = priceKoeff;
 			
 		}
-		public Row(List<Seat> seats, int rowNumber, double priceKoeff)
+		public Row(int rowNumber, double priceKoeff, List<Seat> seats)
 		{
 			if (seats == null)
 				throw new ArgumentNullException("seats");

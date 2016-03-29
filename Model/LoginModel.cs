@@ -20,6 +20,7 @@ namespace La_Lumière.Model
 		
 		public bool checkIfGood(){
 			//TODO complete logging in to a database as a guest, and checkng for password.
+			//form a connection string with login/password
 			return true;
 		}
 		

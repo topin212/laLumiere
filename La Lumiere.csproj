@@ -43,6 +43,7 @@
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -70,6 +71,7 @@
       <SubType>Code</SubType>
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\Hall.cs" />
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Model\Row.cs" />
@@ -78,6 +80,7 @@
     <Compile Include="Properties\WPFAssemblyInfo.cs" />
     <Compile Include="Util\HallPreviewDrawer.cs" />
     <Compile Include="Util\IClosable.cs" />
+    <Compile Include="Util\NorificationEventArgs.cs" />
     <Compile Include="Util\RelayCommand.cs" />
     <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
@@ -99,17 +102,12 @@
       <DependentUpon>TestView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Window1.xaml.cs">
-      <SubType>Code</SubType>
-      <DependentUpon>Window1.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\AdminView.xaml" />
     <Page Include="Views\CassierView.xaml" />
     <Page Include="Views\LoginView.xaml" />
     <Page Include="Views\TestView.xaml" />
-    <Page Include="Window1.xaml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
