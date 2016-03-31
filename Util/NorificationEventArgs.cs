@@ -14,7 +14,7 @@ namespace La_Lumière.Util
 	/// <summary>
 	/// Description of NorificationEventArgs.
 	/// </summary>
-public class NotificationEventArgs : EventArgs {
+	public class NotificationEventArgs : EventArgs {
 		public List<Tuple<int, int, int>> Content { get; protected set; }
 		
 		public NotificationEventArgs(){}

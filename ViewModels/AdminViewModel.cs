@@ -29,13 +29,15 @@ namespace La_Lumière.ViewModels
 		#region relay commands
 		public RelayCommand addRowCommand { get; set; }
 		public RelayCommand removeSelectedRowCommand { get; set; }
+		
+		public RelayCommand addFilmToDB { get; set; }
 		#endregion
 		
 		public AdminViewModel()
 		{
 			//hall = new Hall(fillDummyData());
 			rows = new ObservableCollection<Row>(hall.getRows());
-			//halls = new ObservableCollection<Hall>(Hall.getAllHalls());
+			halls = new ObservableCollection<Hall>(Hall.getAllHalls());
 			#region relay commands setup
 			addRowCommand = new RelayCommand(addRowToHall);
 			removeSelectedRowCommand = new RelayCommand(removeRowFromHall);

@@ -72,6 +72,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\BaseModel.cs" />
+    <Compile Include="Model\Film.cs" />
     <Compile Include="Model\Hall.cs" />
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Model\Row.cs" />

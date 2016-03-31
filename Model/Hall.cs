@@ -68,40 +68,75 @@ namespace La_Lumière.Model
         	var listOfRows = new List<Row>();
         	var listOfSeats = new List<Seat>();
         	
-        	//first we need to check how much halls we have.
-        	//select count(name) from halls
-        	int hallCount = 0;
+        	List<Tuple<string, int, int>> dbDescription = new List<Tuple<string, int, int>>();
         	string CmdString = string.Empty;
+        	
+        	//so, first thing first I need to get the description of all halls available.
+        	//its "select * from hallsDescription"
+        	//it will show me the dimensions for each hall
+        	//but how do i know how much halls there are?
+        	//well, i could create a hall with an e,pty constructor, and then form row[] and seat[] along
+        	
         	try {
-		    	using (SqlConnection con = new SqlConnection(ConString))
-			    {
-			        CmdString = "use lumiere; SELECT count(name) FROM halls";
-			        SqlCommand cmd = new SqlCommand(CmdString, con);
-			        
-			        con.Open();
-			        using(SqlDataReader sqlReader = cmd.ExecuteReader()){
-			        	if(sqlReader.Read() && sqlReader.FieldCount==1){
-			        		hallCount = sqlReader.GetInt32(0);
-			        	}
-			        }
-			    }
-		    } catch (SqlException exc) {
-		    	Console.WriteLine(exc.Message);
-
-		    }
+        		using (SqlConnection con = new SqlConnection(ConString)) {
+        			CmdString = "select * from hallsDescription";
+        			SqlCommand cmd = new SqlCommand(CmdString, con);
+        			con.Open();
+        			using (SqlDataReader sqr = cmd.ExecuteReader()){
+        				while (sqr.Read()) {
+        					dbDescription.Add(new Tuple<string, int, int>(sqr.GetString(0), sqr.GetInt32(1), sqr.GetInt32(2)));
+        				}
+        			}
+        		}
+        	} catch (Exception EXC) {
+        		Console.WriteLine(EXC.Message);
+           	}
         	
-        	Console.WriteLine("HallCount = "+ hallCount);
+        	//so, now i have all the info on the halls in the database. Now I only need to read it.
         	
-        	for (int i = 0; i < hallCount; i++) {
-        		ret.Add(new Hall("Hall", listOfRows));
+        	Boolean breakFlag = false;
+        	
+        	try {
+        		using (SqlConnection con = new SqlConnection(ConString)) {
+        			CmdString = "select * from hallsview";
+        			SqlCommand cmd = new SqlCommand(CmdString, con);
+        			con.Open();
+        			using (SqlDataReader sqr = cmd.ExecuteReader()){
+        				sqr.Read();
+        				for (int i = 0; i<dbDescription.Count; i++) {
+        					var currentHallDescription = dbDescription[i];
+        					//var currentHallDescription = dbDescription.Find(x => x.Item1 == hallName);
+							var currentHallName = sqr.GetString(0);
+							var currentRowNumber = sqr.GetInt32(1);
+        					for (int j = 0; j < currentHallDescription.Item2; j++) {
+        						int currentRow = sqr.GetInt32(1);
+        					
+        						for (int k = 0; !currentHallName.Equals(sqr.GetString(0)) && currentRowNumber != sqr.GetInt32(1); k++) {
+        							sqr.Read();
+    								listOfSeats.Add(new Seat(new Tuple<int, int>(sqr.GetInt32(1), sqr.GetInt32(2)), sqr.GetInt32(3)));
+    								
+        						}
+        						listOfRows.Add(new Row(listOfSeats));
+        						listOfSeats.Clear();
+							}
+        					ret.Add(new Hall(dbDescription[i].Item1, listOfRows));
+        					listOfRows.Clear();
+						}
+        			}
+        		}
+        	} catch (Exception EXC) {
+        		Console.WriteLine(EXC.Message + "\n during getting halls");
+           	}        	
+        	
+        	
+        	foreach (var hall in ret) {
+        		Console.WriteLine(hall.Name);
+        		Console.WriteLine(hall.rows.Count);
+        		foreach (var row in hall.rows) {
+        			Console.WriteLine(row.seats.Count);
+        		}
         	}
-        	
         	return ret;
-        	//then we need to instantiate them
-        	//in order to instantiate a hall I need List<Row> and List<Seat>
-        	//Both can be retrieved from the database. 
-        	//I stored a method to get the connection string in the base class
-
         }
         public Hall(int id)
         {
@@ -110,6 +145,25 @@ namespace La_Lumière.Model
         	
 		   
 		 
+        }
+        
+        public void save(){
+        	string CmdString = string.Empty;
+			for (int i = 0, rowsCount = rows.Count; i < rowsCount; i++) {
+				try {
+					using (SqlConnection con = new SqlConnection(ConString)) {
+						CmdString = "exec remove hall " + Name;
+						SqlCommand cmd = new SqlCommand(CmdString, con);
+						con.Open();
+						cmd.ExecuteReader();
+						CmdString = "exec addRowToHall " + Name + ", " + rows.Count;
+						cmd = new SqlCommand(CmdString, con);
+						cmd.ExecuteReader();
+					}
+				} catch (Exception exc) {
+					Console.WriteLine(exc.Message);
+				}
+			}
         }
 	}
 }

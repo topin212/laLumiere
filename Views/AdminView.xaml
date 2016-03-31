@@ -13,7 +13,8 @@
 			VerticalAlignment="Stretch"
 			HorizontalAlignment="Stretch"
 			Grid.Row="0"
-			Grid.Column="0">
+			Grid.Column="0"
+			x:Name="tabControl1">
 			<TabItem
 				Header="Halls">
 				<Grid
@@ -28,7 +29,8 @@
 						HorizontalAlignment="Stretch"
 						VerticalAlignment="Stretch"
 						Margin="5,0,4,3"
-						Grid.RowSpan="4" />
+						Grid.RowSpan="4"
+						x:Name="hallViewer" />
 					<Label
 						Height="30"
 						Width="240"
@@ -160,10 +162,11 @@
 							Width="120"
 							Height="25"
 							Grid.Column="0"
+							Grid.ColumnSpan="2"
 							Grid.Row="1"
 							HorizontalAlignment="Left"
-							VerticalAlignment="Bottom"
-							Margin="0,0,0,4" />
+							Margin="2.5,0,0,6.5"
+							VerticalAlignment="Top" />
 						<TextBox
 							x:Name="RowSeatNumberTextBox_Copy"
 							Height="20"
@@ -306,7 +309,7 @@
 							Grid.Row="0"
 							HorizontalAlignment="Right"
 							VerticalAlignment="Bottom"
-							Margin="0,0,5,0" />
+							Margin="0,0,0,0" />
 					</Grid>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition
@@ -335,16 +338,257 @@
 					Width="NaN"
 					Height="NaN"
 					HorizontalAlignment="Stretch"
-					Margin="0,0,0,0" />
-			</TabItem>
-			<TabItem
-				Header="Seances">
-				<Grid
-					VerticalAlignment="Stretch"
-					Width="NaN"
-					Height="NaN"
-					HorizontalAlignment="Stretch"
-					Margin="0,0,0,0" />
+					Margin="0,0,0,0">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							Width="0.193417497097199*" />
+						<ColumnDefinition
+							Width="0.128932073103374*" />
+						<ColumnDefinition
+							Width="0.677650429799427*" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition
+							Height="0.0750605326876513*" />
+						<RowDefinition
+							Height="0.460048426150121*" />
+						<RowDefinition
+							Height="0.464891041162228*" />
+					</Grid.RowDefinitions>
+					<DataGrid
+						Width="206"
+						Height="369"
+						Grid.Column="0"
+						Grid.Row="1"
+						Grid.RowSpan="2"
+						HorizontalAlignment="Left"
+						VerticalAlignment="Top"
+						Margin="8,5,0,0"
+						Grid.ColumnSpan="2"
+						x:Name="filmViewer" />
+					<Button
+						Width="75"
+						Height="23"
+						Content="Refresh"
+						Grid.Column="1"
+						Grid.Row="0"
+						HorizontalAlignment="Right"
+						VerticalAlignment="Top"
+						Margin="0,5,5,0" />
+					<Label
+						Height="23"
+						Width="122"
+						Content="Films:"
+						Grid.Column="0"
+						Grid.Row="0"
+						HorizontalAlignment="Left"
+						VerticalAlignment="Top"
+						Margin="5,5,0,0" />
+					<Grid
+						Grid.Row="1"
+						Width="NaN"
+						Height="NaN"
+						HorizontalAlignment="Stretch"
+						VerticalAlignment="Stretch"
+						Margin="0,0,0,0"
+						Grid.Column="2">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition
+								Width="0.283298097251586*" />
+							<ColumnDefinition
+								Width="0.716701902748414*" />
+						</Grid.ColumnDefinitions>
+						<TextBox
+							Width="120"
+							Height="20"
+							Grid.Column="1"
+							Grid.Row="0"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="6,12.5,0,0"
+							x:Name="addFilmNameTB" />
+						<Label
+							Content="Film Name:"
+							Width="130"
+							Height="29"
+							Margin="2,8,0,0"
+							VerticalAlignment="Top"
+							HorizontalAlignment="Left"
+							Grid.Row="0"
+							Grid.Column="0" />
+						<Label
+							Content="Price:"
+							Width="130"
+							Grid.Column="0"
+							Grid.Row="1"
+							VerticalAlignment="Stretch"
+							Margin="2,2,0,1"
+							HorizontalAlignment="Stretch" />
+						<TextBox
+							Width="120"
+							Height="20"
+							Grid.Column="1"
+							Grid.Row="1"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="6,7.5,0,0"
+							x:Name="addFilmPriceTB" />
+						<Label
+							Content="Category:"
+							Width="130"
+							Grid.Column="0"
+							Grid.Row="2"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Stretch"
+							Margin="0,4,0,4" />
+						<TextBox
+							Width="120"
+							Height="20"
+							x:Name="addFilmCatTB"
+							Grid.Column="1"
+							Grid.Row="2"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="6,9,0,0" />
+						<Button
+							Width="120"
+							Height="60"
+							Grid.Column="0"
+							Grid.Row="3"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Bottom"
+							Margin="5,0,0,10"
+							Content="Save"
+							x:Name="saveFilmButton" />
+						<TextBlock
+							Width="325"
+							Height="65"
+							Grid.Column="1"
+							Grid.Row="3"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="6,8,0,0"
+							x:Name="previewTextBlock"
+							Text="Enter something, preview here" />
+						<Grid.RowDefinitions>
+							<RowDefinition
+								Height="0.221052631578947*" />
+							<RowDefinition
+								Height="0.178947368421053*" />
+							<RowDefinition
+								Height="0.18954604537924*" />
+							<RowDefinition
+								Height="0.41045395462076*" />
+						</Grid.RowDefinitions>
+					</Grid>
+					<Grid
+						Grid.Row="2"
+						VerticalAlignment="Stretch"
+						HorizontalAlignment="Stretch"
+						Height="NaN"
+						Width="NaN"
+						Margin="0,0,0,0"
+						Grid.Column="2">
+						<Grid.RowDefinitions>
+							<RowDefinition
+								Height="0.166666666666667*" />
+							<RowDefinition
+								Height="0.166666666666667*" />
+							<RowDefinition
+								Height="0.182291666666666*" />
+							<RowDefinition
+								Height="0.166666666666667*" />
+							<RowDefinition
+								Height="0.317708333333333*" />
+						</Grid.RowDefinitions>
+						<Label
+							Content="Edit selected film here:"
+							Height="25"
+							Width="135"
+							Grid.Column="0"
+							Grid.ColumnSpan="2"
+							Grid.Row="0"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="0,5,0,0" />
+						<Label
+							Content="Film Name:"
+							Height="25"
+							Width="130"
+							Grid.Column="0"
+							Grid.Row="1"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="0,3,0,0" />
+						<Label
+							Content="Price:"
+							Grid.Column="0"
+							Grid.Row="2"
+							HorizontalAlignment="Stretch"
+							VerticalAlignment="Stretch"
+							Margin="0,1,3,4" />
+						<Label
+							Content="Category:"
+							Width="130"
+							Grid.Column="0"
+							Grid.Row="3"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Stretch"
+							Margin="0,1,0,6" />
+						<TextBox
+							Width="120"
+							Height="20"
+							x:Name="editFilmNameTB"
+							Grid.Column="1"
+							Grid.Row="1"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="2,8,0,0" />
+						<TextBox
+							Width="120"
+							Height="20"
+							x:Name="editFilmPriceTB"
+							Grid.Column="1"
+							Grid.Row="2"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="2,6,0,0" />
+						<TextBox
+							Width="120"
+							Height="20"
+							x:Name="editFilmCatTB"
+							Grid.Column="1"
+							Grid.Row="3"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="2,6,0,0" />
+						<Button
+							Content="Save"
+							x:Name="saveEditedFilmButton"
+							Width="120"
+							Height="50"
+							Grid.Column="0"
+							Grid.Row="4"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Bottom"
+							Margin="5,0,0,7" />
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition
+								Width="0.281183932346723*" />
+							<ColumnDefinition
+								Width="0.718816067653277*" />
+						</Grid.ColumnDefinitions>
+					</Grid>
+					<Label
+						Width="130"
+						Height="28"
+						Grid.Column="2"
+						Grid.Row="0"
+						HorizontalAlignment="Left"
+						VerticalAlignment="Top"
+						Margin="0,3,0,0"
+						Content="Add a film:" />
+				</Grid>
 			</TabItem>
 			<TabItem
 				Header="Employees">
@@ -353,8 +597,481 @@
 					Width="NaN"
 					Height="NaN"
 					HorizontalAlignment="Stretch"
-					Margin="0,0,0,0" />
+					Margin="0,0,0,0">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							Width="0.198516819848966*" />
+						<ColumnDefinition
+							Width="0.1268632020018*" />
+						<ColumnDefinition
+							Width="0.674619978149234*" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition
+							Height="0.0829895197215937*" />
+						<RowDefinition
+							Height="0.362932907761902*" />
+						<RowDefinition
+							Height="0.554077572516504*" />
+					</Grid.RowDefinitions>
+					<Label
+						Width="130"
+						Height="25"
+						Grid.Column="0"
+						Grid.Row="0"
+						HorizontalAlignment="Left"
+						VerticalAlignment="Top"
+						Margin="5,5,0,0"
+						Content="Employees:" />
+					<Button
+						Width="75"
+						Height="23"
+						Grid.Row="0"
+						HorizontalAlignment="Left"
+						VerticalAlignment="Top"
+						Content="Refresh"
+						Grid.Column="1"
+						Margin="6.50557784895818,5,0,0" />
+					<DataGrid
+						Width="210"
+						Height="365"
+						Grid.Column="0"
+						Grid.ColumnSpan="2"
+						Grid.Row="1"
+						HorizontalAlignment="Left"
+						VerticalAlignment="Top"
+						Margin="5,6,0,0"
+						Grid.RowSpan="2"
+						x:Name="employeeViewer" />
+					<Grid
+						Grid.Column="2"
+						Grid.Row="1"
+						Height="NaN"
+						Width="NaN"
+						HorizontalAlignment="Stretch"
+						VerticalAlignment="Stretch"
+						Margin="0,0,0,0">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition
+								Width="0.284622141779354*" />
+							<ColumnDefinition
+								Width="0.715377858220646*" />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition
+								Height="0.286782417212377*" />
+							<RowDefinition
+								Height="0.253330095216697*" />
+							<RowDefinition
+								Height="0.464081301537371*" />
+						</Grid.RowDefinitions>
+						<Label
+							Content="Employee name:"
+							Width="120"
+							Height="25"
+							Grid.Column="0"
+							Grid.Row="0"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="5,5,0,0" />
+						<TextBox
+							Width="120"
+							Height="20"
+							Grid.Column="1"
+							Grid.Row="0"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="3,10,0,0"
+							x:Name="addEmployeenameTB" />
+						<Label
+							Width="120"
+							Height="25"
+							Grid.Column="0"
+							Grid.Row="1"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="5,8,0,0"
+							Content="Employee post:" />
+						<TextBox
+							Width="120"
+							Height="20"
+							Grid.Column="1"
+							Grid.Row="1"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="3,8,0,0"
+							x:Name="addEmployeePostTB" />
+						<Button
+							Height="50"
+							Width="110"
+							Content="Save"
+							Grid.Column="0"
+							Grid.Row="2"
+							HorizontalAlignment="Right"
+							VerticalAlignment="Bottom"
+							Margin="0,0,14,10" />
+					</Grid>
+					<Label
+						Width="130"
+						Height="25"
+						Grid.Column="2"
+						Grid.Row="0"
+						HorizontalAlignment="Left"
+						VerticalAlignment="Top"
+						Margin="3,5,0,0"
+						Content="Add Employee" />
+					<Grid
+						Grid.Column="2"
+						Grid.Row="2"
+						HorizontalAlignment="Stretch"
+						VerticalAlignment="Stretch"
+						Height="NaN"
+						Margin="0,0,0,0">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition
+								Width="0.284622141779354*" />
+							<ColumnDefinition
+								Width="0.715377858220646*" />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition
+								Height="0.172069450327426*" />
+							<RowDefinition
+								Height="0.192181451543701*" />
+							<RowDefinition
+								Height="0.175125019448064*" />
+							<RowDefinition
+								Height="0.464081301537372*" />
+						</Grid.RowDefinitions>
+						<Label
+							Content="Employee name:"
+							Width="120"
+							Height="25"
+							Grid.Column="0"
+							Grid.Row="1"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="5,6,0,0" />
+						<TextBox
+							Width="120"
+							Height="20"
+							x:Name="addEmployeenameTB_Copy"
+							Grid.Column="1"
+							Grid.Row="1"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="6,11,0,0" />
+						<Label
+							Width="120"
+							Height="25"
+							Grid.Column="0"
+							Grid.Row="2"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="10,7,0,0"
+							Content="Employee post:" />
+						<TextBox
+							Width="120"
+							Height="20"
+							x:Name="addEmployeePostTB_Copy"
+							Grid.Column="1"
+							Grid.Row="2"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="6,7,0,0" />
+						<Button
+							Content="Save"
+							Width="115"
+							Height="85"
+							Grid.Column="0"
+							Grid.Row="3"
+							HorizontalAlignment="Right"
+							VerticalAlignment="Bottom"
+							Margin="0,0,9,9" />
+						<Label
+							Content="Edit selected employee"
+							Height="25"
+							Width="205"
+							Grid.Column="0"
+							Grid.ColumnSpan="2"
+							Grid.Row="0"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Margin="5,5,0,0" />
+					</Grid>
+				</Grid>
 			</TabItem>
+			<TabItem
+				Header="Seances">
+				<Grid
+					VerticalAlignment="Stretch"
+					Width="NaN"
+					Height="NaN"
+					HorizontalAlignment="Stretch"
+					Margin="0,0,0,0"
+					x:Name="kek">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition
+							Width="0.183381088825215*" />
+						<ColumnDefinition
+							Width="0.1189111747851*" />
+						<ColumnDefinition
+							Width="0.220630372492837*" />
+						<ColumnDefinition
+							Width="0.477077363896848*" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition
+							Height="0.0132682759801404*" />
+						<RowDefinition
+							Height="0.079599076524579*" />
+						<RowDefinition
+							Height="0.083878596767836*" />
+					</Grid.RowDefinitions>
+					<Label
+						Height="30"
+						Width="115"
+						Grid.Column="0"
+						Grid.Row="0"
+						HorizontalAlignment="Left"
+						VerticalAlignment="Top"
+						Margin="0,0,0,0"
+						Content="Seances:" />
+					<Button
+						Width="75"
+						Height="23"
+						Grid.Column="1"
+						Grid.Row="0"
+						HorizontalAlignment="Left"
+						VerticalAlignment="Bottom"
+						Margin="2,0,0,5"
+						Content="Refresh" />
+					<DataGrid
+						Width="205"
+						Height="365"
+						Grid.Column="0"
+						Grid.ColumnSpan="2"
+						Grid.Row="1"
+						HorizontalAlignment="Left"
+						VerticalAlignment="Top"
+						Margin="0,5,0,0"
+						Grid.RowSpan="6"
+						x:Name="seanceViewer" />
+					<Label
+						Width="155"
+						Height="25"
+						Grid.Column="2"
+						Grid.Row="0"
+						HorizontalAlignment="Left"
+						VerticalAlignment="Top"
+						Margin="4,5,0,0"
+						Content="Add new seance"
+						Grid.ColumnSpan="2" />
+					<Grid
+						Grid.Column="2"
+						Grid.ColumnSpan="2"
+						Grid.Row="0"
+						Grid.RowSpan="2"
+						HorizontalAlignment="Stretch"
+						VerticalAlignment="Stretch"
+						Margin="4,30,-2,7">
+						<Grid.RowDefinitions>
+							<RowDefinition
+								Height="0.195530726256983*" />
+							<RowDefinition
+								Height="0.206703910614525*" />
+							<RowDefinition
+								Height="0.217877094972067*" />
+							<RowDefinition
+								Height="0.178770949720671*" />
+							<RowDefinition
+								Height="0.201117318435754*" />
+						</Grid.RowDefinitions>
+						<Label
+							Width="130"
+							Grid.Column="0"
+							Grid.Row="0"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Stretch"
+							Margin="5,5,0,5"
+							Content="Date" />
+						<TextBox
+							Width="120"
+							Height="20"
+							Grid.Column="1"
+							Grid.Row="0"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Bottom"
+							Margin="2,0,0,10" />
+						<Label
+							Grid.Column="0"
+							Grid.Row="1"
+							HorizontalAlignment="Stretch"
+							VerticalAlignment="Stretch"
+							Margin="5,5,13,2"
+							Content="Film name:" />
+						<TextBox
+							Width="120"
+							Height="20"
+							Grid.Column="1"
+							Grid.Row="1"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Bottom"
+							Margin="2,0,0,7" />
+						<Label
+							Grid.Column="0"
+							Grid.Row="2"
+							HorizontalAlignment="Stretch"
+							VerticalAlignment="Stretch"
+							Margin="5,3,13,6"
+							Content="Seance category:" />
+						<TextBox
+							Width="120"
+							Height="20"
+							Grid.Column="1"
+							Grid.Row="2"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Bottom"
+							Margin="2,0,0,11" />
+						<Label
+							Grid.Column="0"
+							Grid.Row="3"
+							HorizontalAlignment="Stretch"
+							VerticalAlignment="Stretch"
+							Margin="5,4,13,3"
+							Content="Hall name:" />
+						<TextBox
+							Width="120"
+							Height="20"
+							Grid.Column="1"
+							Grid.Row="3"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Bottom"
+							Margin="2,0,0,8" />
+						<Button
+							Width="135"
+							Height="25"
+							Content="Save"
+							Grid.Column="0"
+							Grid.Row="4"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Bottom"
+							Margin="5,0,0,5" />
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition
+								Width="0.306418219461698*" />
+							<ColumnDefinition
+								Width="0.693581780538302*" />
+						</Grid.ColumnDefinitions>
+					</Grid>
+					<Grid
+						Grid.Column="2"
+						Grid.ColumnSpan="2"
+						Grid.Row="1"
+						Grid.RowSpan="2"
+						HorizontalAlignment="Stretch"
+						VerticalAlignment="Stretch"
+						Margin="4,184,3,3">
+						<Grid.RowDefinitions>
+							<RowDefinition
+								Height="0.195530726256983*" />
+							<RowDefinition
+								Height="0.206703910614525*" />
+							<RowDefinition
+								Height="0.217877094972067*" />
+							<RowDefinition
+								Height="0.178770949720671*" />
+							<RowDefinition
+								Height="0.201117318435754*" />
+						</Grid.RowDefinitions>
+						<Label
+							Width="130"
+							Grid.Column="0"
+							Grid.Row="0"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Stretch"
+							Margin="5,5,0,5"
+							Content="Date" />
+						<TextBox
+							Width="120"
+							Height="20"
+							Grid.Column="1"
+							Grid.Row="0"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Bottom"
+							Margin="2,0,0,10" />
+						<Label
+							Grid.Column="0"
+							Grid.Row="1"
+							HorizontalAlignment="Stretch"
+							VerticalAlignment="Stretch"
+							Margin="5,5,13,2"
+							Content="Film name:" />
+						<TextBox
+							Width="120"
+							Height="20"
+							Grid.Column="1"
+							Grid.Row="1"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Bottom"
+							Margin="2,0,0,7" />
+						<Label
+							Grid.Column="0"
+							Grid.Row="2"
+							HorizontalAlignment="Stretch"
+							VerticalAlignment="Stretch"
+							Margin="5,3,13,6"
+							Content="Seance category:" />
+						<TextBox
+							Width="120"
+							Height="20"
+							Grid.Column="1"
+							Grid.Row="2"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Bottom"
+							Margin="2,0,0,11" />
+						<Label
+							Grid.Column="0"
+							Grid.Row="3"
+							HorizontalAlignment="Stretch"
+							VerticalAlignment="Stretch"
+							Margin="5,4,13,3"
+							Content="Hall name:" />
+						<TextBox
+							Width="120"
+							Height="20"
+							Grid.Column="1"
+							Grid.Row="3"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Bottom"
+							Margin="2,0,0,8" />
+						<Button
+							Width="135"
+							Height="25"
+							Grid.Column="0"
+							Grid.Row="4"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Bottom"
+							Margin="5,0,0,9"
+							Content="Save" />
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition
+								Width="0.306418219461698*" />
+							<ColumnDefinition
+								Width="0.693581780538302*" />
+						</Grid.ColumnDefinitions>
+					</Grid>
+				</Grid>
+			</TabItem>
+			<Label
+				Width="130"
+				Height="25"
+				Grid.Column="0"
+				Grid.Row="0"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Top"
+				Margin="5,5,0,0"
+				Content="Employees:" />
 		</TabControl>
 	</Grid>
 </Window>

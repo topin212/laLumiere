@@ -29,7 +29,7 @@ namespace La_Lumière.Model
 			this.location = location;
 			this.priceKoeff=1;
 		}
-		public Seat(Tuple<int, int> location, int price)
+		public Seat(Tuple<int, int> location, double price)
 		{
 			if (location == null)
 				throw new ArgumentNullException("location");
